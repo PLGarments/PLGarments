@@ -738,7 +738,7 @@ function saveUrl() {
   const val = document.getElementById("url-input").value.trim();
   if (!val.startsWith("https://script.google.com")) { toast("Please enter a valid Apps Script URL", "error"); return; }
   //API_URL = val;
-  API_URL = 'https://script.google.com/macros/s/AKfycbyeB0CRc7_PxmWEJfIVrwwknHIV0oZ7bIj_RPygInbSeRPXKlV0F5bjqrSyUVkCLFWDoQ/exec';
+  API_URL = 'https://script.google.com/macros/s/AKfycbxOy8AvYfDTPM9J8X7o6jf6PcT9HlEYaMAZsVuZGwsh3iYBvkh3wYgvpWarVDLbjEuX8A/exec';
   localStorage.setItem("tailor_api_url", API_URL);
   toast("Connecting…");
   setConnected(true);
