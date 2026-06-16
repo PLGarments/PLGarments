@@ -932,7 +932,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // PRODUCTS STORAGE
 // ═══════════════════════════════
 
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyeB0CRc7_PxmWEJfIVrwwknHIV0oZ7bIj_RPygInbSeRPXKlV0F5bjqrSyUVkCLFWDoQ/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOy8AvYfDTPM9J8X7o6jf6PcT9HlEYaMAZsVuZGwsh3iYBvkh3wYgvpWarVDLbjEuX8A/exec';
 
 function loadProducts() {
   const grid = document.getElementById('products-grid');
@@ -1318,7 +1318,7 @@ function syncFromSheets(url) {
 
 function testSheetConnection() {
   //const url = document.getElementById('sheets-url').value.trim();
-  const url = 'https://script.google.com/macros/s/AKfycbyeB0CRc7_PxmWEJfIVrwwknHIV0oZ7bIj_RPygInbSeRPXKlV0F5bjqrSyUVkCLFWDoQ/exec';
+  const url = 'https://script.google.com/macros/s/AKfycbxOy8AvYfDTPM9J8X7o6jf6PcT9HlEYaMAZsVuZGwsh3iYBvkh3wYgvpWarVDLbjEuX8A/exec';
   if (!url) { toast('Paste the Web App URL first.', 'error'); return; }
   const res = document.getElementById('sheet-test-result');
   res.style.display = 'block';
