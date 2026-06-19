@@ -483,8 +483,8 @@ select option { background: var(--surface2); color: var(--text); }
 </header>
 
 <main>
-  
-  <!-- Config -->
+  <!---
+  <!-- Config --
   <div class="config-card" id="config-banner">
     <div class="config-icon">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
@@ -504,6 +504,7 @@ select option { background: var(--surface2); color: var(--text); }
       </div>
     </div>
   </div>
+	--> 
   
 
   <!-- Form Panel -->
@@ -714,8 +715,7 @@ const FIELDS = [
 
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("f-reg-date").value = todayStr();
-  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec
-';
+  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec';
 
   if (API_URL) {
     document.getElementById("url-input").value = API_URL;
