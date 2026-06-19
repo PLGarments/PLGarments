@@ -1431,7 +1431,7 @@ function submitReview() {
   });
   // saveReviewsLocal();
 
-  const revUrl = localStorage.getItem(KEY_REV_URL) || localStorage.getItem(KEY_SHEET_URL);
+  const revUrl = localStorage.getItem(KEY_REV_URL) || localStorage.getItem(KEY_SHEET_URL) || SHEET_URL;
     if (revUrl) {
       const ss = document.getElementById('review-sync-status');
       const sd = document.getElementById('review-sync-dot');
