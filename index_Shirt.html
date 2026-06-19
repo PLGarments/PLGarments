@@ -714,7 +714,8 @@ const FIELDS = [
 
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("f-reg-date").value = todayStr();
-  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec';
+  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec
+';
 
   if (API_URL) {
     document.getElementById("url-input").value = API_URL;
@@ -745,7 +746,8 @@ function saveUrl() {
   const val = document.getElementById("url-input").value.trim();
   if (!val.startsWith("https://script.google.com")) { toast("Please enter a valid Apps Script URL", "error"); return; }
   //API_URL = val;
-  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec';
+  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec
+';
 
   localStorage.setItem("tailor_api_url", API_URL);
   toast("Connecting…");
@@ -757,7 +759,7 @@ function saveUrl() {
 async function testConnection() {
   
   const val = document.getElementById("url-input").value.trim();
-  //const val = "https://script.google.com/macros/s/AKfycbzRiAtdMRdVtEpRgLCX--PtPvv3uWjYOOstL6MWZ2Snf0xmDqcslg6K0zonrs1cGX5FoA/exec";
+  //const val = "https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec";
   if (!val) { toast("Enter a URL first", "error"); return; }
   showLoader("Testing connection…");
   try {
@@ -978,7 +980,7 @@ function hideLoader() { document.getElementById("loader").classList.remove("acti
 // ── BACKUP: triggers Apps Script to email a sheet backup to your Gmail ──
 async function backupSheet() {
   if (!API_URL) { toast("Please connect your Google Sheet first", "error"); return; }
-  const BACKUP_EMAIL = "plgarments4@gmail.com"; // ← your Gmail address
+  const BACKUP_EMAIL = "umesh112ec@gmail.com"; // ← your Gmail address
   const btn = document.getElementById("backup-btn");
   btn.disabled = true;
   btn.style.opacity = "0.6";
@@ -995,25 +997,20 @@ async function backupSheet() {
   finally { hideLoader(); btn.disabled = false; btn.style.opacity = "1"; }
 }
 
-// ── SMS: send SMS to customer when status changes to Complete ──
-// Uses Fast2SMS API (popular in India). Set your API key below.
-const FAST2SMS_API_KEY = "trDEPFwzAQakgTCe8Bo4y1L3qs7JxuXcHmipRKZUN0nj9W2b6YXjSAW6xR4bBGe9s0ki3nDy5tlH2oFq"; // ← paste your Fast2SMS API key
+// ── WhatsApp: open WhatsApp with pre-filled message when status changes to Complete ──
+// Free, no API key needed, works instantly on mobile & desktop.
 
-async function sendCompletionSMS(mobileNumber, customerName) {
+function sendCompletionSMS(mobileNumber, customerName) {
   if (!mobileNumber) return;
   const mobile = String(mobileNumber).replace(/\D/g, "").slice(-10); // keep last 10 digits
-  if (mobile.length !== 10) { console.warn("Invalid mobile for SMS:", mobileNumber); return; }
-  const message = `नमस्ते ${customerName || "ग्राहक"}, आपके कपड़े तैयार हो गए हैं। कृपया PL Garments, Rahatgarh से अपना सामान लेकर जाएं। धन्यवाद! | Hello ${customerName || "Customer"}, your order is complete. Please collect your item from PL Garments, Rahatgarh. Thank you!`;
-  try {
-    const res = await fetch("https://www.fast2sms.com/dev/bulkV2", {
-      method: "POST",
-      headers: { "authorization": FAST2SMS_API_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ route: "q", message: message, language: "unicode", flash: 0, numbers: mobile })
-    });
-    const data = await res.json();
-    if (data.return === true) { toast("📱 SMS sent to " + mobile); }
-    else { console.warn("SMS failed:", data); toast("SMS could not be sent (check Fast2SMS key)", "error"); }
-  } catch(e) { console.warn("SMS error:", e); }
+  if (mobile.length !== 10) { console.warn("Invalid mobile for WhatsApp:", mobileNumber); return; }
+
+  const message = encodeURIComponent(
+    `नमस्ते ${customerName || "ग्राहक"} जी 🙏,\n\nआपके कपड़े तैयार हो गए हैं। आप PL Garments, Rahatgarh अपनी शर्ट ले सकते हैं।\n\nधन्यवाद! 😊\n— Bharat - PL Garments, Rahatgarh`
+  );
+
+  window.open(`https://wa.me/91${mobile}?text=${message}`, "_blank");
+  toast("📱 WhatsApp opened for " + mobile);
 }
 
 function toast(msg, type="success") {
