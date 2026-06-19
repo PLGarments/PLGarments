@@ -494,7 +494,7 @@ select option { background: var(--surface2); color: var(--text); }
       <div class="config-sub">Paste your Apps Script Web App URL to get started</div>
       <div class="url-row">
         <div class="url-iw">
-          <input id="url-input" type="url" inputmode="url" placeholder="https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec"/>
+          <input id="url-input" type="url" inputmode="url" placeholder="https://script.google.com/macros/s/AKfycbwrdHpQURIjkIvsg8VK6gkiqpqtO9pdfeoH0vfFbDcq1bZsmyD6olzoo-oB4b5CYcK9NA/exec"/>
         </div>
         <button class="btn btn-primary" onclick="saveUrl()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
@@ -715,7 +715,7 @@ const FIELDS = [
 
 window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("f-reg-date").value = todayStr();
-  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec';
+  API_URL = 'https://script.google.com/macros/s/AKfycbwrdHpQURIjkIvsg8VK6gkiqpqtO9pdfeoH0vfFbDcq1bZsmyD6olzoo-oB4b5CYcK9NA/exec';
 
   if (API_URL) {
     document.getElementById("url-input").value = API_URL;
@@ -746,7 +746,7 @@ function saveUrl() {
   const val = document.getElementById("url-input").value.trim();
   if (!val.startsWith("https://script.google.com")) { toast("Please enter a valid Apps Script URL", "error"); return; }
   //API_URL = val;
-  API_URL = 'https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec';
+  API_URL = 'https://script.google.com/macros/s/AKfycbwrdHpQURIjkIvsg8VK6gkiqpqtO9pdfeoH0vfFbDcq1bZsmyD6olzoo-oB4b5CYcK9NA/exec';
 
   localStorage.setItem("tailor_api_url", API_URL);
   toast("Connecting…");
@@ -758,7 +758,7 @@ function saveUrl() {
 async function testConnection() {
   
   const val = document.getElementById("url-input").value.trim();
-  //const val = "https://script.google.com/macros/s/AKfycbzvbpzXF5hUa-vhN4AXbi5qdwjSc4J2aeUcH80AgiiICUTuFr9OSR0yk2guw4X11pNVPg/exec";
+  //const val = "https://script.google.com/macros/s/AKfycbwrdHpQURIjkIvsg8VK6gkiqpqtO9pdfeoH0vfFbDcq1bZsmyD6olzoo-oB4b5CYcK9NA/exec";
   if (!val) { toast("Enter a URL first", "error"); return; }
   showLoader("Testing connection…");
   try {
