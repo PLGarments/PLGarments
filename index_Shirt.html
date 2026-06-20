@@ -1003,7 +1003,7 @@ function sendCompletionSMS(mobileNumber, customerName) {
   if (mobile.length !== 10) { console.warn("Invalid mobile for WhatsApp:", mobileNumber); return; }
 
   const message = encodeURIComponent(
-    `नमस्ते ${customerName || "ग्राहक"} जी 🙏,\n\nआपकी शर्ट तैयार हो गई हैं। आप PL Garments, Rahatgarh आकर अपनी शर्ट ले सकते हैं।\n\nधन्यवाद! 😊\n— PL Garments (भरत/निशांत Shop संजय मार्केट) , Rahatgarh` 
+    `नमस्ते ${customerName || "ग्राहक"} जी 🙏,\n\nआपकी शर्ट तैयार हो गई हैं। आप PL Garments, Rahatgarh आकर अपनी शर्ट ले सकते हैं।\n\nधन्यवाद! 😊\n— PL Garments (भरत/निशांत Shop संजय मार्केट) , Rahatgarh. \n\n vist our website: https://plgarments.github.io/PLGarments/index.html` 
   );
 
   window.open(`https://wa.me/91${mobile}?text=${message}`, "_blank");
